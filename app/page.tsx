@@ -165,7 +165,7 @@ export default function HomePage() {
               <div className="flex justify-center items-center bg-gradient-to-br from-accent/20 to-primary/20 p-8 rounded-2xl aspect-square">
                 <div className="relative size-11/12">
                   <Image
-                    src="/images/rov-robot.jpg"
+                    src="./images/rov-robot.jpg"
                     alt="ROV underwater inspection operations"
                     className="shadow-2xl rounded-lg"
                     fill
@@ -282,7 +282,7 @@ export default function HomePage() {
               >
                 <div className="relative w-full h-64">
                   <Image
-                    src={`/images/${image}`}
+                    src={`./images/${image}`}
                     alt={name}
                     className="object-cover group-hover:scale-105 transition-transform"
                     fill
@@ -374,7 +374,7 @@ export default function HomePage() {
             </div>
             <div className="relative w-full h-[600px]">
               <Image
-                src="/images/ai-technology-dashboard.jpg"
+                src="./images/ai-technology-dashboard.jpg"
                 alt="AI-powered ROV technology dashboard"
                 className="shadow-2xl rounded-2xl"
                 fill
@@ -406,7 +406,7 @@ export default function HomePage() {
                 <CardContent className="space-y-3">
                   <div className="relative flex justify-center items-center mx-auto w-24 h-24">
                     <Image
-                      src={`/images/${image}`}
+                      src={`./images/${image}`}
                       alt={name}
                       className="max-w-full max-h-full object-contain mix-blend-multiply"
                       fill
