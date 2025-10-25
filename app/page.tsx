@@ -21,11 +21,76 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 
+const CLIENTS_LIST = [
+  {
+    name: "Jordan Bromine Company",
+    image: "jordan-bromine-logo.jpeg",
+  },
+  {
+    name: "Jordan Frogman Company",
+    image: "frogman-logo.jpeg",
+  },
+
+  {
+    name: "Client Logo 1",
+    image: "",
+  },
+  {
+    name: "Client Logo 2",
+    image: "",
+  },
+  {
+    name: "Client Logo 3",
+    image: "",
+  },
+];
+
+const PROJECTS_LIST = [
+  {
+    image: "underwater-hull-inspection-with-rov-cameras.jpg",
+    name: "Hull Inspection Project",
+    description: " Detailed structural assessment",
+    category: "Inspections",
+  },
+  {
+    image: "marine-survey-equipment-and-divers-preparing-for-u.jpg",
+    name: "Marine Survey Mission",
+    description: "Comprehensive underwater assessment",
+    category: "Marine Surveys",
+  },
+
+  {
+    image: "ai-biofouling-detection-system-analyzing-underwater.jpg",
+    name: "AI Detection System",
+    description: "Real-time biofouling analysis",
+    category: "Marine Surveys",
+  },
+
+  {
+    image: "professional-diving-team-with-safety-equipment-pre.jpg",
+    name: "Professional Diving Team",
+    description: "Safety-first underwater operations",
+    category: "Team & Equipment",
+  },
+  {
+    image: "rov-underwater-action.jpeg",
+    name: "ROV Underwater Operations",
+    description: "Advanced ROV conducting real-time inspections",
+    category: "ROV Operations",
+  },
+  {
+    image: "team-boat-rov-equipment.jpeg",
+    name: "Professional Marine Operations",
+    description: "Certified team deploying ROV equipment",
+    category: "Team & Equipment",
+  },
+];
+
 export default function HomePage() {
   return (
     <div className="bg-background min-h-screen">
       {/* Navigation */}
-      <nav className="top-0 z-50 sticky bg-background/95 supports-[backdrop-filter]:bg-background/60 backdrop-blur border-b border-border">
+      <nav className="top-0 z-50 sticky bg-background/95 supports-[backdrop-filter]:bg-background/60 backdrop-blur border-border border-b">
         <div className="mx-auto px-4 sm:px-6 lg:px-8 container">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
@@ -52,9 +117,6 @@ export default function HomePage() {
                 Contact
               </Link>
             </div>
-            <Button asChild>
-              <Link href="#contact">Get Quote</Link>
-            </Button>
           </div>
         </div>
       </nav>
@@ -212,185 +274,34 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
-            <Button variant="default" size="sm" className="rounded-full">
-              All Projects
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              className="bg-transparent rounded-full"
-            >
-              ROV Operations
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              className="bg-transparent rounded-full"
-            >
-              Team & Equipment
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              className="bg-transparent rounded-full"
-            >
-              Inspections
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              className="bg-transparent rounded-full"
-            >
-              Marine Surveys
-            </Button>
-          </div>
-
           <div className="gap-6 grid md:grid-cols-2 lg:grid-cols-3 mb-12">
-            <div className="group relative shadow-lg rounded-2xl overflow-hidden cursor-pointer">
-              <div className="w-full h-64">
-                <Image
-                  src="/images/rov-underwater-action.jpeg"
-                  alt="ROV conducting underwater inspection operations"
-                  className="object-cover group-hover:scale-105 transition-transform"
-                  fill
-                />
+            {PROJECTS_LIST.map(({ name, description, category, image }) => (
+              <div
+                key={name}
+                className="group relative shadow-lg rounded-2xl overflow-hidden cursor-pointer"
+              >
+                <div className="relative w-full h-64">
+                  <Image
+                    src={`/images/${image}`}
+                    alt={name}
+                    className="object-cover group-hover:scale-105 transition-transform"
+                    fill
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="bottom-4 left-4 absolute opacity-0 group-hover:opacity-100 text-white transition-opacity">
+                  <h3 className="drop-shadow-lg mb-1 font-semibold text-lg">
+                    {name}
+                  </h3>
+                  <p className="drop-shadow-md text-white/95 text-sm">
+                    {description}
+                  </p>
+                </div>
+                <Badge className="top-4 right-4 absolute bg-accent text-accent-foreground">
+                  {category}
+                </Badge>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="bottom-4 left-4 absolute opacity-0 group-hover:opacity-100 text-white transition-opacity">
-                <h3 className="drop-shadow-lg mb-1 font-semibold text-lg">
-                  ROV Underwater Operations
-                </h3>
-                <p className="drop-shadow-md text-white/95 text-sm">
-                  Advanced ROV conducting real-time inspections
-                </p>
-              </div>
-              <Badge className="top-4 right-4 absolute bg-accent text-accent-foreground">
-                ROV Operations
-              </Badge>
-            </div>
-
-            <div className="group relative shadow-lg rounded-2xl overflow-hidden cursor-pointer">
-              <div className="w-full h-64">
-                <Image
-                  src="/images/team-boat-rov-equipment.jpeg"
-                  alt="Professional team with ROV equipment on marine vessel"
-                  className="object-cover group-hover:scale-105 transition-transform"
-                  fill
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="bottom-4 left-4 absolute opacity-0 group-hover:opacity-100 text-white transition-opacity">
-                <h3 className="drop-shadow-lg mb-1 font-semibold text-lg">
-                  Professional Marine Operations
-                </h3>
-                <p className="drop-shadow-md text-white/95 text-sm">
-                  Certified team deploying ROV equipment
-                </p>
-              </div>
-              <Badge className="top-4 right-4 absolute bg-accent text-accent-foreground">
-                Team & Equipment
-              </Badge>
-            </div>
-
-            <div className="group relative shadow-lg rounded-2xl overflow-hidden cursor-pointer">
-              <div className="w-full h-64">
-                <Image
-                  src="/images/underwater-hull-inspection-with-rov-cameras.jpg"
-                  alt="Hull inspection with high-resolution cameras"
-                  className="object-cover group-hover:scale-105 transition-transform"
-                  fill
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="bottom-4 left-4 absolute opacity-0 group-hover:opacity-100 text-white transition-opacity">
-                <h3 className="drop-shadow-lg mb-1 font-semibold text-lg">
-                  Hull Inspection Project
-                </h3>
-                <p className="drop-shadow-md text-white/95 text-sm">
-                  Detailed structural assessment
-                </p>
-              </div>
-              <Badge className="top-4 right-4 absolute bg-accent text-accent-foreground">
-                Inspections
-              </Badge>
-            </div>
-
-            <div className="group relative shadow-lg rounded-2xl overflow-hidden cursor-pointer">
-              <div className="w-full h-64">
-                <Image
-                  src="/images/marine-survey-equipment-and-divers-preparing-for-u.jpg"
-                  alt="Marine survey preparation"
-                  className="object-cover group-hover:scale-105 transition-transform"
-                  fill
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="bottom-4 left-4 absolute opacity-0 group-hover:opacity-100 text-white transition-opacity">
-                <h3 className="drop-shadow-lg mb-1 font-semibold text-lg">
-                  Marine Survey Mission
-                </h3>
-                <p className="drop-shadow-md text-white/95 text-sm">
-                  Comprehensive underwater assessment
-                </p>
-              </div>
-              <Badge className="top-4 right-4 absolute bg-accent text-accent-foreground">
-                Marine Surveys
-              </Badge>
-            </div>
-
-            <div className="group relative shadow-lg rounded-2xl overflow-hidden cursor-pointer">
-              <div className="w-full h-64">
-                <Image
-                  src="/images/ai-biofouling-detection-system-analyzing-underwate.jpg"
-                  alt="AI biofouling detection in action"
-                  className="object-cover group-hover:scale-105 transition-transform"
-                  fill
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="bottom-4 left-4 absolute opacity-0 group-hover:opacity-100 text-white transition-opacity">
-                <h3 className="drop-shadow-lg mb-1 font-semibold text-lg">
-                  AI Detection System
-                </h3>
-                <p className="drop-shadow-md text-white/95 text-sm">
-                  Real-time biofouling analysis
-                </p>
-              </div>
-              <Badge className="top-4 right-4 absolute bg-accent text-accent-foreground">
-                ROV Operations
-              </Badge>
-            </div>
-
-            <div className="group relative shadow-lg rounded-2xl overflow-hidden cursor-pointer">
-              <div className="w-full h-64">
-                <Image
-                  src="/images/professional-diving-team-with-safety-equipment-pre.jpg"
-                  alt="Professional diving team preparation"
-                  className="object-cover group-hover:scale-105 transition-transform"
-                  fill
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="bottom-4 left-4 absolute opacity-0 group-hover:opacity-100 text-white transition-opacity">
-                <h3 className="drop-shadow-lg mb-1 font-semibold text-lg">
-                  Professional Diving Team
-                </h3>
-                <p className="drop-shadow-md text-white/95 text-sm">
-                  Safety-first underwater operations
-                </p>
-              </div>
-              <Badge className="top-4 right-4 absolute bg-accent text-accent-foreground">
-                Team & Equipment
-              </Badge>
-            </div>
-          </div>
-
-          <div className="text-center">
-            <Button variant="outline" size="lg" className="bg-transparent mb-8">
-              Load More Projects{" "}
-              <span className="ml-2 text-muted text-sm">(14 more)</span>
-            </Button>
+            ))}
           </div>
 
           <div className="mt-12 text-center">
@@ -487,90 +398,24 @@ export default function HomePage() {
           </div>
 
           <div className="gap-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 mx-auto max-w-6xl">
-            <Card className="hover:shadow-lg p-6 border-border text-center transition-shadow">
-              <CardContent className="space-y-3">
-                <div className="flex justify-center items-center mx-auto w-16 h-16">
-                  <Image
-                    src="/images/frogman-logo.jpeg"
-                    alt="Jordan Frogman Company"
-                    className="max-w-full max-h-full object-contain"
-                    fill
-                  />
-                </div>
-                <h3 className="font-semibold text-sm">
-                  Jordan Frogman Company
-                </h3>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg p-6 border-border text-center transition-shadow">
-              <CardContent className="space-y-3">
-                <div className="flex justify-center items-center mx-auto w-16 h-16">
-                  <Image
-                    src="/images/jordan-bromine-logo.jpeg"
-                    alt="Jordan Bromine Company"
-                    className="max-w-full max-h-full object-contain"
-                    fill
-                  />
-                </div>
-                <h3 className="font-semibold text-sm">
-                  Jordan Bromine Company
-                </h3>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg p-6 border-border text-center transition-shadow">
-              <CardContent className="space-y-3">
-                <div className="flex justify-center items-center bg-muted mx-auto rounded-lg w-16 h-16">
-                  <span className="text-muted-foreground text-xs">
-                    Client Logo
-                  </span>
-                </div>
-                <h3 className="font-semibold text-sm">Marine Partner 3</h3>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg p-6 border-border text-center transition-shadow">
-              <CardContent className="space-y-3">
-                <div className="flex justify-center items-center bg-muted mx-auto rounded-lg w-16 h-16">
-                  <span className="text-muted-foreground text-xs">
-                    Client Logo
-                  </span>
-                </div>
-                <h3 className="font-semibold text-sm">Industrial Client 4</h3>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg p-6 border-border text-center transition-shadow">
-              <CardContent className="space-y-3">
-                <div className="flex justify-center items-center bg-muted mx-auto rounded-lg w-16 h-16">
-                  <span className="text-muted-foreground text-xs">
-                    Client Logo
-                  </span>
-                </div>
-                <h3 className="font-semibold text-sm">Marine Services 5</h3>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg p-6 border-border text-center transition-shadow">
-              <CardContent className="space-y-3">
-                <div className="flex justify-center items-center bg-muted mx-auto rounded-lg w-16 h-16">
-                  <span className="text-muted-foreground text-xs">
-                    Client Logo
-                  </span>
-                </div>
-                <h3 className="font-semibold text-sm">Port Authority 6</h3>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="mt-8 text-center">
-            <Button
-              variant="ghost"
-              className="text-muted hover:text-foreground"
-            >
-              View All Partners <span className="ml-2 text-sm">(+15 more)</span>
-            </Button>
+            {CLIENTS_LIST.map(({ name, image }) => (
+              <Card
+                key={name}
+                className="hover:shadow-lg border-border text-center transition-shadow"
+              >
+                <CardContent className="space-y-3">
+                  <div className="relative flex justify-center items-center mx-auto w-24 h-24">
+                    <Image
+                      src={`/images/${image}`}
+                      alt={name}
+                      className="max-w-full max-h-full object-contain mix-blend-multiply"
+                      fill
+                    />
+                  </div>
+                  <h3 className="font-semibold text-sm">{name}</h3>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -578,7 +423,7 @@ export default function HomePage() {
       {/* Contact Section */}
       <section id="contact" className="bg-card py-20">
         <div className="mx-auto px-4 sm:px-6 lg:px-8 container">
-          <div className="gap-12 grid lg:grid-cols-2">
+          <div className="flex items-center gap-12">
             <div className="space-y-8">
               <div className="space-y-4">
                 <h2 className="font-bold text-3xl lg:text-4xl text-balance">
@@ -591,7 +436,7 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="space-y-6">
+              <div className="flex flex-wrap justify-between items-center gap-12">
                 <div className="flex items-center gap-4">
                   <div className="flex justify-center items-center bg-accent/10 rounded-lg w-12 h-12">
                     <Mail className="w-6 h-6 text-accent" />
@@ -625,77 +470,6 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-
-            <Card className="border-border">
-              <CardHeader>
-                <CardTitle>Send us a message</CardTitle>
-                <CardDescription>
-                  Fill out the form below and we&apos;ll get back to you within
-                  24 hours.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="gap-4 grid md:grid-cols-2">
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="name"
-                      className="font-medium text-foreground text-sm"
-                    >
-                      Name
-                    </label>
-                    <input
-                      id="name"
-                      type="text"
-                      className="bg-input px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-ring w-full"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="email"
-                      className="font-medium text-foreground text-sm"
-                    >
-                      Email
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      className="bg-input px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-ring w-full"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label
-                    htmlFor="subject"
-                    className="font-medium text-foreground text-sm"
-                  >
-                    Subject
-                  </label>
-                  <input
-                    id="subject"
-                    type="text"
-                    className="bg-input px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-ring w-full"
-                    placeholder="How can we help?"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label
-                    htmlFor="message"
-                    className="font-medium text-foreground text-sm"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={4}
-                    className="bg-input px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-ring w-full resize-none"
-                    placeholder="Tell us about your project..."
-                  />
-                </div>
-                <Button className="w-full">Send Message</Button>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </section>
