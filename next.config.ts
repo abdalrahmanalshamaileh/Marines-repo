@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   output: "export",
   basePath: isProd ? "/Marines-repo" : "", // TODO: this should follow the domain
-  assetPrefix: isProd ? "/Marines-repo/" : "",
+  assetPrefix: isProd ? "/Marines-repo" : "",
   images: {
     unoptimized: true,
   },
