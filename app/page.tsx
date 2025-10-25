@@ -165,7 +165,7 @@ export default function HomePage() {
               <div className="flex justify-center items-center bg-gradient-to-br from-accent/20 to-primary/20 p-8 rounded-2xl aspect-square">
                 <div className="relative size-11/12">
                   <Image
-                    src="/images/underwater-rov-robot-with-cameras-inspecting-ship-.jpg"
+                    src="/images/rov-robot.jpg"
                     alt="ROV underwater inspection operations"
                     className="shadow-2xl rounded-lg"
                     fill
