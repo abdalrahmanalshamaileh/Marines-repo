@@ -21,39 +21,63 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 
+const CERTIFICATIONS = [
+  {
+    name: "DNV",
+  },
+  {
+    name: "Lloyds register",
+  },
+  {
+    name: "ClassNK",
+  },
+  {
+    name: "ABS",
+  },
+  {
+    name: "KR CLASS",
+  },
+  {
+    name: "CCS",
+  },
+  {
+    name: "RINA",
+  },
+];
+
 const CLIENTS_LIST = [
   {
     name: "Jordan Bromine Company",
-    image: "jordan-bromine-logo.jpeg",
+    image: "jordan-bromine-logo.png",
   },
   {
     name: "Jordan Frogman Company",
     image: "frogman-logo.jpeg",
   },
 
-  {
-    name: "Client Logo 1",
-    image: "",
-  },
-  {
-    name: "Client Logo 2",
-    image: "",
-  },
-  {
-    name: "Client Logo 3",
-    image: "",
-  },
+  // {
+  //   name: "Client Logo 1",
+  //   image: "",
+  // },
+  // {
+  //   name: "Client Logo 2",
+  //   image: "",
+  // },
+  // {
+  //   name: "Client Logo 3",
+  //   image: "",
+  // },
 ];
 
 const PROJECTS_LIST = [
   {
-    image: "underwater-hull-inspection-with-rov-cameras.jpg",
+    image: "rov-robot.jpg",
     name: "Hull Inspection Project",
     description: " Detailed structural assessment",
     category: "Inspections",
   },
   {
-    image: "marine-survey-equipment-and-divers-preparing-for-u.jpg",
+    image: "survey.jpeg",
     name: "Marine Survey Mission",
     description: "Comprehensive underwater assessment",
     category: "Marine Surveys",
@@ -73,17 +97,17 @@ const PROJECTS_LIST = [
     category: "Team & Equipment",
   },
   {
-    image: "rov-underwater-action.jpeg",
+    image: "rov.jpeg",
     name: "ROV Underwater Operations",
     description: "Advanced ROV conducting real-time inspections",
     category: "ROV Operations",
   },
-  {
-    image: "team-boat-rov-equipment.jpeg",
-    name: "Professional Marine Operations",
-    description: "Certified team deploying ROV equipment",
-    category: "Team & Equipment",
-  },
+  // {
+  //   image: "team-boat-rov-equipment.jpeg",
+  //   name: "Professional Marine Operations",
+  //   description: "Certified team deploying ROV equipment",
+  //   category: "Team & Equipment",
+  // },
 ];
 
 export default function HomePage() {
@@ -135,9 +159,9 @@ export default function HomePage() {
                   <span className="text-accent">Beneath the Surface</span>
                 </h1>
                 <p className="max-w-2xl text-muted text-xl leading-relaxed">
-                  Revolutionizing underwater inspection services using advanced
-                  ROV technology enhanced with AI detection. Compliant with DNV
-                  and Lloyd&apos;s Register international standards.
+                  Revolutionizing Underwater inspection services using advanced
+                  ROV technology enhanced with AI. Compliant with international
+                  Maritime organization standards.
                 </p>
               </div>
               <div className="flex sm:flex-row flex-col gap-4">
@@ -148,26 +172,22 @@ export default function HomePage() {
                   <Link href="#contact">Contact Us</Link>
                 </Button>
               </div>
-              <div className="flex items-center gap-8 pt-4">
-                <div className="flex items-center gap-2">
-                  <Shield className="w-5 h-5 text-accent" />
-                  <span className="text-muted text-sm">DNV Certified</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Shield className="w-5 h-5 text-accent" />
-                  <span className="text-muted text-sm">
-                    Lloyd&apos;s Register
-                  </span>
-                </div>
+              <div className="flex flex-wrap items-center gap-4 pt-4 max-w-md">
+                {CERTIFICATIONS.map(({ name }) => (
+                  <div key={name} className="flex items-center gap-2">
+                    <Shield className="w-5 h-5 text-accent" />
+                    <span className="text-muted text-sm">{name}</span>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="relative">
               <div className="flex justify-center items-center bg-gradient-to-br from-accent/20 to-primary/20 p-8 rounded-2xl aspect-square">
                 <div className="relative size-11/12">
                   <Image
-                    src="./images/rov-robot.jpg"
+                    src="./images/hero.jpeg"
                     alt="ROV underwater inspection operations"
-                    className="shadow-2xl rounded-lg"
+                    className="shadow-2xl rounded-lg object-contain"
                     fill
                   />
                 </div>
@@ -374,7 +394,7 @@ export default function HomePage() {
             </div>
             <div className="relative w-full h-[600px]">
               <Image
-                src="./images/ai-technology-dashboard.jpg"
+                src="./images/ai-tech.jpeg"
                 alt="AI-powered ROV technology dashboard"
                 className="shadow-2xl rounded-2xl"
                 fill
@@ -397,7 +417,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="gap-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 mx-auto max-w-6xl">
+          <div className="flex flex-wrap justify-center items-center gap-8 mx-auto max-w-6xl">
             {CLIENTS_LIST.map(({ name, image }) => (
               <Card
                 key={name}
@@ -408,7 +428,7 @@ export default function HomePage() {
                     <Image
                       src={`./images/${image}`}
                       alt={name}
-                      className="max-w-full max-h-full object-contain mix-blend-multiply"
+                      className="max-w-full max-h-full object-center object-cover mix-blend-multiply"
                       fill
                     />
                   </div>
